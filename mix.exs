@@ -43,10 +43,7 @@ defmodule IpGeoParser.MixProject do
       "test.setup": [
         "ecto.drop --quiet -r IpGeoParser.Support.Repo",
         "ecto.create --quiet -r IpGeoParser.Support.Repo",
-        "ecto.migrate --quiet -r IpGeoParser.Support.Repo",
-        "ecto.drop --quiet -r IpGeoParser.Support.UnboxedRepo",
-        "ecto.create --quiet -r IpGeoParser.Support.UnboxedRepo",
-        "ecto.migrate --quiet -r IpGeoParser.Support.UnboxedRepo"
+        "ecto.migrate --quiet -r IpGeoParser.Support.Repo"
       ]
     ]
   end
