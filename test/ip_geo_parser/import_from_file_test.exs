@@ -9,7 +9,7 @@ defmodule IpGeoParser.ImportFromFileTest do
 
   describe "call" do
     test "should parse the CSV file and return properly" do
-      assert {inserted, errors} = ImportFromFile.call(@file_path, Repo)
+      assert {inserted, errors} = ImportFromFile.call(@file_path, Repo, max_concurrency: 2)
 
       assert inserted == 2214
       assert length(errors) == 217
@@ -85,7 +85,7 @@ defmodule IpGeoParser.ImportFromFileTest do
   end
 
   defp with_tmp_csv(csv, fun) do
-    tmp_file_path = Path.expand([System.tmp_dir!(), @tmp_file_name])
+    tmp_file_path = Path.expand([System.tmp_dir!(), "/", @tmp_file_name])
 
     try do
       :ok = File.touch!(tmp_file_path)
